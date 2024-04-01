@@ -1,21 +1,25 @@
-<% if(success && success.length) {%>
-    <div class="alert alert-success w-50 m-auto  alert-dismissible fade show" role="alert">
-        <%= success%>
-       <button
-       type="button"
-       class="btn-close"
-       data-bs-dismiss="alert"
-       aria-label="Close"></button>
-      </div>
-<%}%>
+<% if(success && success.length) { %>
+    <div class="alert alert-success w-50 m-auto alert-dismissible  fade show flashshow" role="alert">
+        <%= success %>
+    </div>
+    <script>
+        setTimeout(function() {
+            document.querySelector('.alert-success').style.display = 'none';
+        }, 2000); 
+    </script>
+<% } %>
 
-<% if(error && error.length) {%>
-    <div class="alert alert-danger w-50 m-auto  alert-dismissible fade show" role="alert">
-        <%= error%>
-       <button
-       type="button"
-       class="btn-close"
-       data-bs-dismiss="alert"
-       aria-label="Close"></button>
-      </div>
-<%}%>
+<% if(error && error.length) { %>
+    <div class="alert alert-danger w-50 m-auto alert-dismissible fade show flashshow" role="alert">
+        <%= error %>
+    </div>
+    <script>
+        setTimeout(function() {
+            document.querySelector('.alert-danger').style.display = 'none';
+        }, 2000); 
+    </script>
+<% } %>
+
+<script>
+    console.log("Flash called");
+</script>

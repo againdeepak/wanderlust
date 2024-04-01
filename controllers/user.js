@@ -7,6 +7,9 @@ module.exports.renderSignupForm=(req, res) => {
 module.exports.renderLoginForm= (req, res) => {
     res.render('../views/users/login.ejs')
 }
+module.exports.show=(req,res)=>{
+    res.render('../views/listing/index.ejs')
+}
 module.exports.signup=async (req, res,next) => {
     try {
         let { username, email, password } = req.body;

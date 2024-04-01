@@ -1,8 +1,21 @@
 <% layout('/layouts/boilerplate.ejs') -%>
+<style>
+    .starability-slot {
+        display: flex;
+        
+    }
+    .starability-slot label {
+        font-size: 5px; /* Adjust the font size of the labels if necessary */
+    }
+    .starability-result{
+        font-size: smaller;
+    }
+</style>
+
     <body>
         <script>
-            let mapToken= "<%=process.env.MAP_TOKEN %>";
-            let coordinates="<%- JSON.stringify(listing.geometry.coordinates)%>"
+            let mapToken = "<%=process.env.MAP_TOKEN %>";
+            let coordinates = "<%- JSON.stringify(listing.geometry.coordinates)%>"
         </script>
         <h3 class="text-center mt-3 mb-3">Listing Details</h3>
         <div class="card w-75 m-auto ">
@@ -39,11 +52,11 @@
                     <div class="w-75 m-auto mb-3 mt-2">
                         <% if(currUser) {%>
                             <h4 class="text-center">Leave a Review</h4>
-                            <br>
+                            
                             <form action="/listings/<%=listing.id%>/reviews" method="POST" novalidate
                                 class="needs-validation ">
                                 <fieldset class="starability-slot">
-                                    <h2>Rating</h2>
+                                 
                                     <input type="radio" id="no-rate" class="input-no-rate" name="review[rating]"
                                         value="1" checked aria-label="No rating." />
 
@@ -63,7 +76,6 @@
                                     <label for="rate5">5 stars.</label>
                                     <span class="starability-focus-ring"></span>
                                 </fieldset>
-                                <br>
                                 <div>
                                     <label for="comment">Comments</label><br>
                                     <textarea name="review[comment]" id="comment" cols="30" rows="5"
@@ -72,39 +84,43 @@
                                         Please provide your comments
                                     </div>
                                 </div>
-                                <button class=" btn btn-outline-dark mt-1">Submit</button>
+                                <button class=" userlogin mt-2 ">Submit</button>
                             </form>
                             <%}%>
-                                <p><b>All reviews</b></p>
-                                <hr>
-                                <div class="row">
-                                    <% for(review of listing.reviews){%>
-                                        <div class="card col-md-5 mx-3 border border-red ">
-                                            <div class="card-body">
-                                                <h5 class="card-title">@<i>
-                                                        <%=review.author.username%>
-                                                    </i></h5>
-                                                <p class="starability-result" data-rating="<%= review.rating%>"></p>
-                                                <p class="card-text">
-                                                    <%= review.comment%>
-                                                </p>
-                                                <% if(currUser) {%>
-                                                    <form
-                                                        action="/listings/<%=listing._id%>/reviews/<%=review._id%>?_method=DELETE"
-                                                        method="POST">
-                                                        <button class="btn btn-dark">Delete</button>
-                                                    </form>
-                                                    <%}%>
+                                <%if(listing.reviews.length>0){%>
+                                    <p  class="text-center"><b>All reviews</b></p>
+                                    <hr>
+                                    <div class="row">
+                                        <% for(review of listing.reviews){%>
+                                            <div class="card col-md-5 mx-3 border border-red ">
+                                                <div class="card-body">
+                                                    <h5 class="card-title">@<i>
+                                                            <%=review.author.username%>
+                                                        </i></h5>
+                                                    <p class="starability-result" data-rating="<%= review.rating%>"></p>
+                                                    <p class="card-text">
+                                                        <%= review.comment%>
+                                                    </p>
+                                                    <% if(currUser) {%>
+                                                        <form
+                                                            action="/listings/<%=listing._id%>/reviews/<%=review._id%>?_method=DELETE"
+                                                            method="POST">
+                                                            <button class="btn btn-dark">Delete</button>
+                                                        </form>
+                                                        <%}%>
+                                                </div>
                                             </div>
-                                        </div>
-
-                                     <%}%>
-                             </div>
+                
+                                            <%}%>
+                                    </div>
+                                    <%}%>
                     </div>
-                    <div class="w-75 m-auto mb-3 mt-2">
-                        <h3>Where you'll be</h3>
-                        <div id="map"></div>
-                    </div>
+                    <% if(listing.geometry.type==="Point" ) {%>
+                        <div class="w-75 m-auto mb-3 mt-2">
+                            <h3>Where you'll be</h3>
+                            <div id="map"></div>
+                        </div>
+                        <%}%>
         </div>
         <script src="/javascript/map.js"></script>
-</body>
+    </body>

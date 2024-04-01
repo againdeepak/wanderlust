@@ -14,10 +14,6 @@ router.get('/new', isLoggedIn, (req, res) => {
 router.post('/', isLoggedIn, upload.single('listing[image]'),
     validateListing,
     wrapAsync(listingController.postList))
-// router.post('/',upload.single('listing[image]'),(req,res)=>{
-//     console.log(req.file.path,"...",req.file.filename);
-//     res.send(req.file);
-// })
 
 //Get Result
 router.get("/", wrapAsync(listingController.index))
