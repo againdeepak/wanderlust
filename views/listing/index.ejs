@@ -7,6 +7,8 @@
             margin-top: 0.5rem;
             padding:0.5rem;
             margin-bottom: 1rem;
+            gap:10px;
+            flex-wrap: wrap;
 
         }
         .filter{
@@ -85,18 +87,18 @@
         <% } %>
 </div>
 <script>
-    let tab=document.querySelector('#flexSwitchCheckDefault');
-    tab.addEventListener('click',()=>{
-        console.log("clicked");
-        let taxInfo=document.querySelector('.tax-info');
-        for(info of taxInfo){
-            if(info.style.display!=="inline"){
-                info.style.display="inline";
-            }
-            else{
-                info.style.display="none";
-            }
+    let tab = document.querySelector('#flexSwitchCheckDefault');
+tab.addEventListener('click', () => {
+    console.log("clicked");
+    let taxInfoList = document.querySelectorAll('.tax-info');
+    taxInfoList.forEach(info => {
+        if (info.style.display !== "inline") {
+            info.style.display = "inline";
+        } else {
+            info.style.display = "none";
         }
-    })
+    });
+});
+
    
 </script>
