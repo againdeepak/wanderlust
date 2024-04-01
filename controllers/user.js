@@ -8,7 +8,7 @@ module.exports.renderLoginForm= (req, res) => {
     res.render('../views/users/login.ejs')
 }
 module.exports.show=(req,res)=>{
-    res.render('../views/listing/index.ejs')
+    res.redirect('/listings')
 }
 module.exports.signup=async (req, res,next) => {
     try {
