@@ -251,6 +251,34 @@ label{
     border-color: #ffffff !important;
 }
 
+/* flash success */
+.alert-slide {
+    position: fixed;
+    top: -100px; /* Start off-screen */
+    left: 47%; /* Center horizontally */
+    transform: translateX(-50%);
+    width: 25%; /* Adjust width as needed */
+    background-color: #4CAF50;;
+    color: white;
+    border: 3px solid rgb(255, 255, 255);
+    border-radius: 5px;
+    font-weight: 900;
+    transition: top 0.5s ease-in-out;
+    z-index: 9999;
+    padding: 10px;
+}
+
+.alert-show {
+    top: 16px; /* Slide in from the top */
+    
+}
+.alert-slide{
+    text-align: center;
+}
+.alerterrorFlash{
+    background-color: #ff4444; /* Red background color for error */
+    color: white; /* White text color */
+}
 @keyframes colorChange {
     0% { color: red; }
     14% { color: orange; }
@@ -301,16 +329,12 @@ background: linear-gradient(297deg, rgba(0,0,0,1) 0%, rgba(255,0,129,1) 50%, rgb
        align-items: center;
        
     }
+    .alert-slide {
+    width: 90% !important; /* Adjust width as needed */
+       margin: auto;
+    }
+    .alert-show {
+        top: 16px; /* Slide in from the top */
+    }
 
 }
-
-/* <div class="navbar-nav  ms-auto">
-<a class="nav-link addairbnb" href="/listings/new"><i class="fa-solid fa-plus"></i> New AirBnb</a>
-<% if(!currUser) {%>
-<a class="nav-link signup  mx-2"  href="/signup">Signup</a>
-<a class="nav-link login " href="/login">Login</a>
-<%}%>
-<% if(currUser) {%>
-    <a class="nav-link logout mx-2 " href="/logout">Logout</a>
-<%}%>
-</div> */
