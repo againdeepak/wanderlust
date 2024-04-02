@@ -3,19 +3,25 @@
         <%= success %>
     </div>
     <script>
-        setTimeout(function() {
-            var alertDiv = document.getElementById('alert');
-            alertDiv.classList.remove('alert-show');
+        // Check if the success message has already been displayed
+        if (!sessionStorage.getItem('successDisplayed')) {
             setTimeout(function() {
-                alertDiv.remove();
-            }, 500); 
-        }, 2500);
-        setTimeout(function() {
-            document.getElementById('alert').classList.add('alert-show');
-        }, 100); 
+                var alertDiv = document.getElementById('alert');
+                alertDiv.classList.remove('alert-show');
+                setTimeout(function() {
+                    alertDiv.remove();
+                }, 500);
+            }, 2500);
+            setTimeout(function() {
+                document.getElementById('alert').classList.add('alert-show');
+            }, 100);
+            
+            // Mark success message as displayed
+            sessionStorage.setItem('successDisplayed', true);
+        }
     </script>
-    
 <% } %>
+
 
 <% if(error && error.length) { %>
     <div id="alert" class="alert-slide alerterrorFlash">

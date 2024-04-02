@@ -1,8 +1,9 @@
 mapboxgl.accessToken = mapToken;
 const map = new mapboxgl.Map({
     container: 'map', // container ID
+    style:"mapbox://styles/mapbox/standard",
     center: coordinates, // starting position [lng, lat]
-    zoom: 10 // starting zoom
+    zoom: 9 // starting zoom
 });
 
 console.log(coordinates);
@@ -14,4 +15,5 @@ const marker=new mapboxgl.Marker({'color':"#b40219"})
     )
 )
 .addTo(map);
+
 

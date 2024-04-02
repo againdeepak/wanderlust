@@ -164,6 +164,7 @@ a img:hover {
    height: 30rem;
    border:2px solid gray;
    border-radius: 10px;
+   background-image: url("");
 }
 
 
@@ -336,5 +337,13 @@ background: linear-gradient(297deg, rgba(0,0,0,1) 0%, rgba(255,0,129,1) 50%, rgb
     .alert-show {
         top: 16px; /* Slide in from the top */
     }
+    #map {
+        width: 100%;
+        height: 10rem;
+        border:2px solid gray;
+        border-radius: 10px;
+        background-image: url("../assest/mapmarker.gif");
+        background-position: 0cm;
+     }
 
 }
